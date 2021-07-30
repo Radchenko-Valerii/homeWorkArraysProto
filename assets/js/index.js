@@ -14,7 +14,16 @@ function MyArrayProto(){
     return j;
   }
 
-  this.shift
+  this.shift = function(){
+    let j = this[0];
+    for(let i=0; i<this.length; i++){
+      this[i - 1] = this[i];
+    }
+    delete this[-1];
+    this.length --;
+    delete this[this.length];
+    return j;
+  }
 
   this.unshift
 
