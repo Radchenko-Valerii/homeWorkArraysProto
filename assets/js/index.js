@@ -25,7 +25,17 @@ function MyArrayProto(){
     return j;
   }
 
-  this.unshift
+  this.unshift = function(...rest){
+    for (let j=this.length+rest.length; j>0; j--){
+      this[j] = this[j - rest.length]
+    }
+    for(let i= 0; i<rest.length; i++){
+      this[i] = rest[i];
+    }
+    this.length += rest.length;
+    delete this[this.length];
+    return this.length;
+  }
 
   this.concat
 
@@ -43,4 +53,4 @@ function MyArray (){
 const myArrProto = new MyArrayProto();
 MyArray.prototype = myArrProto;
 
-const myArr = new MyArray(1,2,3,4,5,'lol',6)
+const myArr = new MyArray(5,8,14,27,0,'lol',6)
