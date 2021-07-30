@@ -37,7 +37,16 @@ function MyArrayProto(){
     return this.length;
   }
 
-  this.concat
+  this.concat = function(array2){
+    let arrayResult = [];
+    for(let i = 0; i < this.length; i++){
+      arrayResult[i] = this[i];
+    }
+    for(let i = 0; i< array2.length; i++){
+      arrayResult[this.length + i] = array2[i];
+    }
+    return arrayResult;
+  }
 
 
 }
@@ -53,4 +62,6 @@ function MyArray (){
 const myArrProto = new MyArrayProto();
 MyArray.prototype = myArrProto;
 
-const myArr = new MyArray(5,8,14,27,0,'lol',6)
+const myArr = new MyArray(5,8,14,27,0,'lol',6);
+
+let arrr = [1, 2, 3];
