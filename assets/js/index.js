@@ -45,15 +45,18 @@ function MyArrayProto(){
     return this.length;
   }
 
-  this.concat = function(array2){
+  this.concat = function(){
     let arrayResult = new MyArray();
     for(let i = 0; i < this.length; i++){
-      arrayResult[i] = this[i];
+      arrayResult.push(this[i]);
     }
-    for(let i = 0; i< array2.length; i++){
-      arrayResult[this.length + i] = array2[i];
+    for(let i = 0; i< arguments.length; i++){
+      if(MyArray.isMyArray(arguments[i]) || Array.isArray(arguments[i])){
+        for(let j=0; j<arguments[i].length; j++){
+          arrayResult.push(arguments[i][j])
+        }
+      } else {arrayResult.push(arguments[i]);}
     }
-    arrayResult.length = array2.length + this.length;
     return arrayResult;
   }
 }
